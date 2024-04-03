@@ -1,11 +1,10 @@
-/sort
-/hash_table
-/b_tree
-/.*
-template.py
+.*
+_*
 /github_src_repo
 /Krafton_Jungle_w00
 /Krafton_Jungle_w01
-/test
+/Krafton_Jungle_w02/test
+/Krafton_Jungle_w02/b_tree
+/Krafton_Jungle_w02/topology_sorting
 /venv
-/Template/bj.py
+/Template
