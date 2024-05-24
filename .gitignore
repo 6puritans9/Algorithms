@@ -7,4 +7,8 @@ temp/
 etc/
 /github_src_repo
 /Krafton_Jungle_w00
-/Krafton_Jungle_w01
+Data-Structures/
+Krafton*/
+Slack/
+Cmake*
+*.pem
