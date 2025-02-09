@@ -1,14 +1,2 @@
-.*
-_*
-venv/
-Template/
-solution/
-temp/
-etc/
-/github_src_repo
-/Krafton_Jungle_w00
-Data-Structures/
-Krafton*/
-Slack/
-Cmake*
-*.pem
+.git/
+.idea/
