@@ -1,2 +1,22 @@
 .git/
+
+# IDEs
 .idea/
+.vscode/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Node.js dependencies (if applicable)
+node_modules/
+
+# Build files (for C++, Java, etc.)
+bin/
+build/
+
+# Log files
+*.log
+
+# Temporary files
+temp.*
