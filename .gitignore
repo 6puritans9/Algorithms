@@ -3,6 +3,7 @@
 # IDEs
 .idea/
 .vscode/
+.vs/
 
 # Operating system files
 .DS_Store
