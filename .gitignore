@@ -4,6 +4,7 @@
 .idea/
 .vscode/
 .vs/
+vscpp/
 
 # Operating system files
 .DS_Store
