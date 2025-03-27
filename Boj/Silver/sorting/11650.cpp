@@ -36,67 +36,64 @@ Complexity:
 
 */
 
-void swap(pair<int, int>& a, pair<int, int>& b) {
-	pair<int, int> temp = a;
-	a = b;
-	b = temp;
+void swap(vector<pair<int, int>>& dots_1, vector<pair<int, int>>& dots_2) {
+	vector<pair<int, int>> temp = dots_1;
+	dots_1 = dots_2;
+	dots_2 = temp;
 }
 
-void quicksort(vector<pair<int, int>>& dots, int left, int right, char target) {
+void quicksort_x(vector<pair<int, int>>& dots, int left, int right) {
 	int pl = left;
 	int pr = right;
-	int pivot;
+	int pivot = dots[(left + right) / 2].first;
 
-	if (target == 'x') {
-		pivot = dots[(left + right) / 2].first;
-
-		while (pl <= pr) {
-			while (dots[pl].first < pivot) {
-				pl += 1;
-			}
-			while (dots[pr].first > pivot) {
-				pr -= 1;
-			}
-			if (pl <= pr) {
-				swap(dots[pl], dots[pr]);
-				pl += 1;
-				pr -= 1;
-			}
+	while (pl <= pr) {
+		while (dots[pl].first < pivot) {
+			pl += 1;
 		}
-
-		if (left < pr) {
-			quicksort(dots, left, pr, target);
+		while (dots[pr].first > pivot) {
+			pr -= 1;
 		}
-		if (pl < right) {
-			quicksort(dots, pl, right, target);
+		if (pl <= pr) {
+			swap(dots[pl], dots[pr]);
+			pl += 1;
+			pr -= 1;
 		}
 	}
 
-	else {
-		pivot = dots[(left + right) / 2].second;
+	if (pl < right) {
+		quicksort_x(dots, pl, right);
+	}
+	if (left < pr) {
+		quicksort_x(dots, left, pr);
+	}
+}
 
-		while (pl <= pr) {
-			while (dots[pl].second < pivot) {
-				pl += 1;
-			}
-			while (dots[pr].second > pivot) {
-				pr -= 1;
-			}
-			if (pl <= pr) {
-				swap(dots[pl], dots[pr]);
-				pl += 1;
-				pr -= 1;
-			}
-		}
+void quicksort_y(vector<pair<int, int>>& dots, int left, int right) {
+	int pl = left;
+	int pr = right;
+	int pivot = dots[(left + right) / 2].second;
 
-		if (left < pr) {
-			quicksort(dots, left, pr, target);
+	while (pl <= pr) {
+		while (dots[pl].second < pivot) {
+			pl += 1;
 		}
-		if (pl < right) {
-			quicksort(dots, pl, right, target);
+		while (dots[pr].second > pivot) {
+			pr -= 1;
+		}
+		if (pl <= pr) {
+			swap(dots[pl], dots[pr]);
+			pl += 1;
+			pr -= 1;
 		}
 	}
 
+	if (pl < right) {
+		quicksort_y(dots, pl, right);
+	}
+	if (left < pr) {
+		quicksort_y(dots, left, pr);
+	}
 }
 
 int main()
@@ -109,7 +106,7 @@ int main()
 		scanf("%d %d", &dots[i].first, &dots[i].second);
 	}
 
-	quicksort(dots, 0, n - 1, 'x');
+	quicksort_x(dots, 0, n-1);
 
 	int left = 0;
 	while (left < n) {
@@ -117,15 +114,8 @@ int main()
 		while (right < n && dots[left].first == dots[right].first) {
 			right += 1;
 		}
-		if (right > left + 1) {
-			quicksort(dots, left, right - 1, 'y');
-		}
+		quicksort_y(dots, left, right-1);
 		left = right;
-	}
-
-	for (int i = 0; i < n; i++) {
-		printf("%d %d", dots[i].first, dots[i].second);
-		printf("\n");
 	}
 
 	return 0;
